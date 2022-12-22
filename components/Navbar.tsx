@@ -51,7 +51,7 @@ const Navbar = () => {
   if (!mounted) return null;
 
   return (
-    <nav className="sticky top-0 flex items-center justify-center w-screen px-6 sm:px-16">
+    <nav className="sticky top-0 z-50 flex items-center justify-center w-screen px-6 backdrop-blur-md sm:px-16">
       <div className="w-full lg:max-w-7xl">
         <div className="flex items-center justify-between w-full py-6">
           <img src="/logo.svg" alt="Logo" className="w-32 h-8" />
@@ -108,7 +108,7 @@ const Navbar = () => {
                     <motion.ul
                       key="menuContainer"
                       variants={menuContainer}
-                      className="absolute list-none -right-5 flex flex-col p-2 mx-4 my-2 bg-gradient-to-b from-base-300/50 to-base-200/50 top-8 min-w-[140px] rounded-xl items-center justify-center space-y-1"
+                      className="absolute list-none -right-5 flex flex-col px-2 py-4 mx-4 my-2 bg-gradient-to-b from-base-300/50 to-base-200/50 top-8 min-w-[140px] rounded-xl items-center justify-center space-y-1"
                     >
                       <motion.li
                         key={"themeToggle"}
@@ -117,7 +117,7 @@ const Navbar = () => {
                             ? setTheme("dark")
                             : setTheme("light")
                         }
-                        className="w-full py-1 text-center rounded hoverr:bg-teal-400/80"
+                        className="w-full py-1 text-center rounded hover:bg-teal-400/80"
                       >
                         {theme === "light" ? "🌞" : "🌚"}
                       </motion.li>

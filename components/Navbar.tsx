@@ -109,7 +109,7 @@ const Navbar = () => {
                 onClick={() => setMenuToggle((prev) => !prev)}
                 className="flex items-center justify-center w-12 h-12 rounded-full cursor-pointer hover:bg-gray-600/50"
               >
-                {menuToggle ? (
+                {!menuToggle ? (
                   <div className="relative">
                     <img
                       src="/close.svg"
@@ -120,7 +120,7 @@ const Navbar = () => {
                     <motion.ul
                       key="menuContainer"
                       variants={navMenuContainer}
-                      className="absolute list-none -right-5 flex flex-col px-2 py-4 mx-4 my-2 bg-gradient-to-b from-base-300/50 to-base-200/50 top-8 min-w-[140px] rounded-xl items-center justify-center space-y-1"
+                      className="absolute list-none -right-5 flex flex-col px-2 py-4 mx-4 my-2 bg-gradient-to-b from-base-300/80 to-base-200/80 top-8 min-w-[140px] rounded-xl items-center justify-center space-y-1 backdrop-blur-lg z-50"
                     >
                       <motion.li
                         key={"themeToggle"}

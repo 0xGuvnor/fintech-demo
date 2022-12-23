@@ -1,43 +1,50 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { navLinks } from "../constants";
-import { AnimatePresence, motion, Variants } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  navContainer,
+  navMenuContainer,
+  navMenuItem,
+  navVariant,
+  themeVariant,
+} from "../utils/motion";
 
-const themeVariant: Variants = {
-  hidden: { y: -50, opacity: 0 },
-  show: { y: 0, opacity: 1, transition: { type: "spring", duration: 0.5 } },
-  exit: { y: 50, opacity: 0, transition: { duration: 0.1 } },
-  hover: { scale: 1.5 },
-  tap: { scale: 30, y: 250, x: -250 },
-};
+// const themeVariant: Variants = {
+//   hidden: { y: -50, opacity: 0 },
+//   show: { y: 0, opacity: 1, transition: { type: "spring", duration: 0.5 } },
+//   exit: { y: 50, opacity: 0, transition: { duration: 0.1 } },
+//   hover: { scale: 1.5 },
+//   tap: { scale: 30, y: 250, x: -250 },
+// };
 
-const container: Variants = {
-  hidden: { y: -50, opacity: 0 },
-  show: { y: 0, opacity: 1, transition: { type: "spring", duration: 0.5 } },
-  exit: { x: 50, opacity: 0, transition: { duration: 0.1 } },
-};
+// const container: Variants = {
+//   hidden: { y: -50, opacity: 0 },
+//   show: { y: 0, opacity: 1, transition: { type: "spring", duration: 0.5 } },
+//   exit: { x: 50, opacity: 0, transition: { duration: 0.1 } },
+// };
 
-const menuContainer: Variants = {
-  hidden: { x: 50, opacity: 0 },
-  show: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 60,
-      damping: 10,
-      delayChildren: 0.2,
-      staggerChildren: 0.05,
-    },
-  },
-  exit: { x: 50, opacity: 0, transition: { type: "spring", duration: 0.2 } },
-};
+// const menuContainer: Variants = {
+//   hidden: { x: 50, opacity: 0 },
+//   show: {
+//     x: 0,
+//     opacity: 1,
+//     transition: {
+//       type: "spring",
+//       stiffness: 60,
+//       damping: 10,
+//       delayChildren: 0.2,
+//       staggerChildren: 0.05,
+//     },
+//   },
+//   exit: { x: 50, opacity: 0, transition: { type: "spring", duration: 0.2 } },
+// };
 
-const menuItem: Variants = {
-  hidden: { opacity: 0, x: 50 },
-  show: { opacity: 1, x: 0, transition: { type: "spring", duration: 0.3 } },
-  exit: { opacity: 0, x: 100, transition: { duration: 0.1 } },
-};
+// const menuItem: Variants = {
+//   hidden: { opacity: 0, x: 50 },
+//   show: { opacity: 1, x: 0, transition: { type: "spring", duration: 0.3 } },
+//   exit: { opacity: 0, x: 100, transition: { duration: 0.1 } },
+// };
 
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
@@ -51,7 +58,12 @@ const Navbar = () => {
   if (!mounted) return null;
 
   return (
-    <nav className="sticky top-0 z-50 flex items-center justify-center w-screen px-6 backdrop-blur-md sm:px-16">
+    <motion.nav
+      variants={navVariant}
+      initial="hidden"
+      animate="show"
+      className="sticky top-0 z-50 flex items-center justify-center w-screen px-6 backdrop-blur-md sm:px-16"
+    >
       <div className="w-full lg:max-w-7xl">
         <div className="flex items-center justify-between w-full py-6">
           <img src="/logo.svg" alt="Logo" className="w-32 h-8" />
@@ -90,7 +102,7 @@ const Navbar = () => {
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={menuToggle ? "menuOpen" : "menuClose"}
-                variants={container}
+                variants={navContainer}
                 initial="hidden"
                 animate="show"
                 exit="exit"
@@ -107,7 +119,7 @@ const Navbar = () => {
 
                     <motion.ul
                       key="menuContainer"
-                      variants={menuContainer}
+                      variants={navMenuContainer}
                       className="absolute list-none -right-5 flex flex-col px-2 py-4 mx-4 my-2 bg-gradient-to-b from-base-300/50 to-base-200/50 top-8 min-w-[140px] rounded-xl items-center justify-center space-y-1"
                     >
                       <motion.li
@@ -124,7 +136,7 @@ const Navbar = () => {
                       {navLinks.map((link) => (
                         <motion.li
                           key={link.id}
-                          variants={menuItem}
+                          variants={navMenuItem}
                           className="w-full py-1 text-base text-center text-white rounded hover:bg-teal-400/80"
                         >
                           <a href={`#${link.id}`}> {link.title}</a>
@@ -144,7 +156,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 export default Navbar;

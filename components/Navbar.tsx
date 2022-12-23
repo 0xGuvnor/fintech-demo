@@ -9,42 +9,7 @@ import {
   navVariant,
   themeVariant,
 } from "../utils/motion";
-
-// const themeVariant: Variants = {
-//   hidden: { y: -50, opacity: 0 },
-//   show: { y: 0, opacity: 1, transition: { type: "spring", duration: 0.5 } },
-//   exit: { y: 50, opacity: 0, transition: { duration: 0.1 } },
-//   hover: { scale: 1.5 },
-//   tap: { scale: 30, y: 250, x: -250 },
-// };
-
-// const container: Variants = {
-//   hidden: { y: -50, opacity: 0 },
-//   show: { y: 0, opacity: 1, transition: { type: "spring", duration: 0.5 } },
-//   exit: { x: 50, opacity: 0, transition: { duration: 0.1 } },
-// };
-
-// const menuContainer: Variants = {
-//   hidden: { x: 50, opacity: 0 },
-//   show: {
-//     x: 0,
-//     opacity: 1,
-//     transition: {
-//       type: "spring",
-//       stiffness: 60,
-//       damping: 10,
-//       delayChildren: 0.2,
-//       staggerChildren: 0.05,
-//     },
-//   },
-//   exit: { x: 50, opacity: 0, transition: { type: "spring", duration: 0.2 } },
-// };
-
-// const menuItem: Variants = {
-//   hidden: { opacity: 0, x: 50 },
-//   show: { opacity: 1, x: 0, transition: { type: "spring", duration: 0.3 } },
-//   exit: { opacity: 0, x: 100, transition: { duration: 0.1 } },
-// };
+import Image from "next/image";
 
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
@@ -73,7 +38,7 @@ const Navbar = () => {
             {navLinks.map((nav) => (
               <li
                 key={nav.id}
-                className="text-sm text-white cursor-pointer hover:underline underline-offset-4 hover:opacity-75 hover:decoration-teal-400"
+                className="text-sm cursor-pointer text-primary-content hover:underline underline-offset-4 hover:opacity-75 hover:decoration-teal-400"
               >
                 <a href={`#${nav.id}`}>{nav.title}</a>
               </li>
@@ -98,7 +63,24 @@ const Navbar = () => {
           </ul>
 
           {/* Menu bar on mobile */}
-          <div className="flex items-center justify-end flex-1 sm:hidden">
+          <div className="flex items-center justify-end flex-1 space-x-4 sm:hidden">
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.li
+                key={theme === "light" ? "mobileLightMode" : "mobileDarkMode"}
+                variants={themeVariant}
+                initial="hidden"
+                animate="show"
+                exit="exit"
+                whileHover="hover"
+                whileTap="tap"
+                onClick={() =>
+                  theme === "light" ? setTheme("dark") : setTheme("light")
+                }
+                className="text-xl cursor-pointer"
+              >
+                {theme === "light" ? "🌞" : "🌚"}
+              </motion.li>
+            </AnimatePresence>
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
                 key={menuToggle ? "menuOpen" : "menuClose"}
@@ -109,35 +91,25 @@ const Navbar = () => {
                 onClick={() => setMenuToggle((prev) => !prev)}
                 className="flex items-center justify-center w-12 h-12 rounded-full cursor-pointer hover:bg-gray-600/50"
               >
-                {!menuToggle ? (
+                {menuToggle ? (
                   <div className="relative">
-                    <img
+                    <Image
                       src="/close.svg"
-                      alt="Menu Icon"
-                      className="object-contain w-7 h-7"
+                      alt="Close Menu Icon"
+                      width={28}
+                      height={28}
                     />
 
                     <motion.ul
                       key="menuContainer"
                       variants={navMenuContainer}
-                      className="absolute list-none -right-5 flex flex-col px-2 py-4 mx-4 my-2 bg-gradient-to-b from-base-300/80 to-base-200/80 top-8 min-w-[140px] rounded-xl items-center justify-center space-y-1 backdrop-blur-lg z-50"
+                      className="absolute list-none -right-5 flex flex-col px-2 py-4 mx-4 my-2 bg-gradient-to-b from-neutral to-neutral-focus top-8 min-w-[140px] rounded-xl items-center justify-center space-y-1 backdrop-blur-lg z-50 border border-primary-content"
                     >
-                      <motion.li
-                        key={"themeToggle"}
-                        onClick={() =>
-                          theme === "light"
-                            ? setTheme("dark")
-                            : setTheme("light")
-                        }
-                        className="w-full py-1 text-center rounded hover:bg-teal-400/80"
-                      >
-                        {theme === "light" ? "🌞" : "🌚"}
-                      </motion.li>
                       {navLinks.map((link) => (
                         <motion.li
                           key={link.id}
                           variants={navMenuItem}
-                          className="w-full py-1 text-base text-center text-white rounded hover:bg-teal-400/80"
+                          className="w-full py-1 text-center rounded text-primary-content hover:bg-teal-400/80"
                         >
                           <a href={`#${link.id}`}> {link.title}</a>
                         </motion.li>
@@ -145,10 +117,11 @@ const Navbar = () => {
                     </motion.ul>
                   </div>
                 ) : (
-                  <img
+                  <Image
                     src="/menu.svg"
                     alt="Menu Icon"
-                    className="object-contain w-7 h-7"
+                    width={28}
+                    height={28}
                   />
                 )}
               </motion.div>

@@ -29,7 +29,7 @@ const Navbar = () => {
       variants={navVariant}
       initial="hidden"
       animate="show"
-      className={`sticky top-0 z-50 flex items-center justify-center w-screen px-6 backdrop-blur-md sm:px-16 ${
+      className={`fixed top-0 z-50 flex items-center justify-center w-screen px-6 backdrop-blur-md sm:px-16 ${
         isScrolled &&
         "border-b border-accent transition-all ease-in-out duration-1000"
       }`}
@@ -108,7 +108,7 @@ const Navbar = () => {
                     <motion.ul
                       key="menuContainer"
                       variants={navMenuContainer}
-                      className="absolute list-none -right-5 flex flex-col px-2 py-4 mx-4 my-2 bg-gradient-to-b from-neutral to-neutral-focus top-8 min-w-[140px] rounded-xl items-center justify-center space-y-1 backdrop-blur-lg z-50 border border-primary-content"
+                      className="absolute list-none -right-5 flex flex-col px-2 py-4 mx-4 my-2 bg-gradient-to-b from-neutral to-neutral-focus top-8 min-w-[140px] rounded-xl items-center justify-center space-y-1 z-50 border border-primary-content"
                     >
                       {navLinks.map((link) => (
                         <motion.li

@@ -1,20 +1,28 @@
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { billingImgVariant } from "../utils/motion";
 
 const Billing = () => {
   return (
     <section
-      id="product"
+      id="products"
       className="flex flex-col-reverse py-6 md:flex-row sm:py-16"
     >
       <div className="relative flex items-center justify-center flex-1 mt-5 mr-0 md:mr-10 md:mt-0">
-        <div className="relative z-30 flex-1 w-[420px] h-[420px] md:h-[550px] md:w-1/2">
+        <motion.div
+          variants={billingImgVariant}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.8 }}
+          className="relative z-30 flex-1 w-[420px] h-[420px] md:h-[550px] md:w-[550px]"
+        >
           <Image
             src="/bill.png"
             alt="Billing"
             fill
             className="object-contain"
           />
-        </div>
+        </motion.div>
         <div className="absolute top-0 z-10 w-1/2 rounded-full -left-1/2 h-1/2 white__gradient"></div>
         <div className="absolute bottom-0 z-0 w-1/2 rounded-full -left-1/2 h-1/2 pink__gradient"></div>
       </div>

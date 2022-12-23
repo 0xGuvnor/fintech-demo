@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { feedback } from "../constants";
+import { container2, testimonialItem } from "../utils/motion";
 import FeedbackCard from "./FeedbackCard";
 
 const Testimonials = () => {
@@ -22,11 +23,19 @@ const Testimonials = () => {
         </div>
       </div>
 
-      <div className="relative z-10 flex flex-wrap justify-between w-full space-x-2 space-y-1 sm:justify-start">
+      <motion.div
+        variants={container2}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.8 }}
+        className="relative z-10 flex flex-wrap justify-between w-full space-x-2 space-y-1 overflow-hidden sm:justify-start"
+      >
         {feedback.map((card) => (
-          <FeedbackCard key={card.id} {...card} />
+          <motion.div key={card.id} variants={testimonialItem}>
+            <FeedbackCard {...card} />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

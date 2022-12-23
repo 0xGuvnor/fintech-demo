@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { cardImgVariant } from "../utils/motion";
 import Button from "./Button";
 
 const CardDeal = () => {
@@ -19,14 +20,20 @@ const CardDeal = () => {
       </div>
 
       <div className="flex items-center justify-center flex-1 mt-5 md:mt-0">
-        <div className="relative flex-1 h-[300px] w-[300px]">
+        <motion.div
+          variants={cardImgVariant}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.8 }}
+          className="relative flex-1 h-[300px] w-[300px] sm:h-[500px] sm:w-[500px]"
+        >
           <Image
             src="/card.png"
             alt="Card Graphic"
             fill
             className="object-contain"
           />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

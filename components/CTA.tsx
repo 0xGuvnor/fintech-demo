@@ -13,8 +13,8 @@ const CTA = () => {
         </p>
       </div>
 
-      <div className="flex items-center justify-center mt-5 ml-0 sm:ml-10 sm:mt-0">
-        <Button text="Join us" />
+      <div className="flex items-center justify-center flex-1 max-w-md mt-5 ml-0 sm:ml-10 sm:mt-0">
+        <Button text="Join today" styles="flex flex-1 justify-center" />
       </div>
     </section>
   );

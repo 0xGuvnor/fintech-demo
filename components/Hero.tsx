@@ -1,30 +1,41 @@
 import Image from "next/image";
 import GetStarted from "./GetStarted";
+import { motion } from "framer-motion";
+import { heroTextVariant } from "../utils/motion";
 
 const Hero = () => {
   return (
-    <section id="home" className="flex items-start justify-center">
+    <section
+      id="home"
+      className="flex items-start justify-center mt-[85px] sm:mt-[70px]"
+    >
       <div className="w-full lg:max-w-7xl">
         <div className="flex flex-col py-6 md:flex-row sm:py-16">
           <div className="flex flex-col items-start justify-center flex-1 px-6 sm:px-16 xl:px-0">
             <div className="flex py-1.5 items-center mb-2 px-4 rounded-xl bg-discount-gradient">
-              <img
+              <Image
                 src="/Discount.svg"
                 alt="Discount Icon"
-                className="w-8 h-8"
+                width={32}
+                height={32}
               />
               <div className="ml-2 leading-8 whitespace-pre text-neutral-content">
                 <span className="text-accent">20%</span> Discount for{" "}
-                <span className="text-accent">1 Month</span> Accounts
+                <span className="text-accent">New</span> Signups
               </div>
             </div>
 
             <div className="flex items-center justify-between w-full">
               <h1 className="flex-1 text-5xl font-semibold leading-[75px] sm:leading-[100.8px] text-white sm:text-7xl">
                 The Next <br className="hidden sm:block" />
-                <span className="text-transparent bg-gradient-to-tr from-teal-500 via-teal-200 to-teal-100 bg-clip-text">
+                <motion.span
+                  variants={heroTextVariant}
+                  initial="hidden"
+                  animate="show"
+                  className="text-transparent bg-gradient-to-tr from-teal-500 via-teal-200 to-teal-100 bg-clip-text"
+                >
                   Generation
-                </span>
+                </motion.span>
               </h1>
 
               <div className="hidden mr-0 md:mr-4 sm:flex">

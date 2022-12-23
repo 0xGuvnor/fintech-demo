@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { features } from "../constants";
 import Button from "./Button";
+import { motion } from "framer-motion";
+import { benefitItem, container } from "../utils/motion";
 
 interface Props {
   id: string;
@@ -27,11 +29,19 @@ const Business = () => {
         <Button text="Get Started" styles="mt-10" />
       </div>
 
-      <div className="relative flex flex-col items-center justify-center flex-1 mt-10 ml-0 md:ml-10 md:mt-0">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.8 }}
+        className="relative flex flex-col items-center justify-center flex-1 mt-10 ml-0 md:ml-10 md:mt-0"
+      >
         {features.map((feature, index) => (
-          <FeatureCard key={feature.id} {...feature} index={index} />
+          <motion.div key={feature.id} variants={benefitItem}>
+            <FeatureCard {...feature} index={index} />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
+import { useMediaQuery } from "react-responsive";
 import { feedback } from "../constants";
 import { container2, testimonialItem } from "../utils/motion";
 import FeedbackCard from "./FeedbackCard";
 
 const Testimonials = () => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
   return (
     <section
       id="clients"
@@ -27,7 +30,7 @@ const Testimonials = () => {
         variants={container2}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.8 }}
+        viewport={{ once: true, amount: isMobile ? 0.4 : 0.8 }}
         className="relative z-10 flex flex-wrap justify-between w-full space-x-2 space-y-1 overflow-hidden sm:justify-start"
       >
         {feedback.map((card) => (

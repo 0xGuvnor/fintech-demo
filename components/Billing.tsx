@@ -13,7 +13,7 @@ const Billing = () => {
           variants={billingImgVariant}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0.8 }}
+          viewport={{ once: true, amount: 0.75 }}
           className="relative z-30 flex-1 w-[420px] h-[420px] md:h-[550px] md:w-[550px]"
         >
           <Image

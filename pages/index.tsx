@@ -4,6 +4,7 @@ import Business from "../components/Business";
 import CardDeal from "../components/CardDeal";
 import Clients from "../components/Clients";
 import CTA from "../components/CTA";
+import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import Layout from "../components/Layout";
 import Stats from "../components/Stats";
@@ -23,6 +24,7 @@ const Home: NextPage = () => {
           <Testimonials />
           <Clients />
           <CTA />
+          <Footer />
         </div>
       </div>
     </Layout>

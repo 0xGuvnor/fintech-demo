@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 interface Props {
-  styles: string;
+  styles?: string;
   text: string;
 }
 

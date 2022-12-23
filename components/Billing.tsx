@@ -6,7 +6,7 @@ const Billing = () => {
       id="product"
       className="flex flex-col-reverse py-6 md:flex-row sm:py-16"
     >
-      <div className="relative flex items-center justify-center flex-1 mt-10 mr-0 md:mr-10 md:mt-0">
+      <div className="relative flex items-center justify-center flex-1 mt-5 mr-0 md:mr-10 md:mt-0">
         <div className="relative z-30 flex-1 w-[420px] h-[420px] md:h-[550px] md:w-1/2">
           <Image
             src="/bill.png"

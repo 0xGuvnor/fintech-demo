@@ -5,10 +5,15 @@
 @tailwind utilities;
 
 @layer base {
+  html,
+  body {
+    /*overflow-x: hidden;*/
+  }
   html {
-    font-family: "IBM Plex Sans", sans-serif;
   }
   body {
+    font-family: "IBM Plex Sans", sans-serif;
+    contain: paint;
     @apply bg-neutral-focus;
   }
 }

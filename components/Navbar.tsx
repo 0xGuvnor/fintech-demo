@@ -10,11 +10,13 @@ import {
   themeVariant,
 } from "../utils/motion";
 import Image from "next/image";
+import useIsScrolled from "../hooks/useIsScrolled";
 
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const [menuToggle, setMenuToggle] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const isScrolled = useIsScrolled();
 
   useEffect(() => {
     setMounted(true);
@@ -27,7 +29,10 @@ const Navbar = () => {
       variants={navVariant}
       initial="hidden"
       animate="show"
-      className="sticky top-0 z-50 flex items-center justify-center w-screen px-6 backdrop-blur-md sm:px-16"
+      className={`sticky top-0 z-50 flex items-center justify-center w-screen px-6 backdrop-blur-md sm:px-16 ${
+        isScrolled &&
+        "border-b border-accent transition-all ease-in-out duration-1000"
+      }`}
     >
       <div className="w-full lg:max-w-7xl">
         <div className="flex items-center justify-between w-full py-6">

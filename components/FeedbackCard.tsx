@@ -10,7 +10,7 @@ interface Props {
 
 const FeedbackCard = ({ content, name, title, img }: Props) => {
   return (
-    <div className="flex flex-col justify-between max-w-sm px-10 py-12 transition duration-300 ease-in-out rounded-2xl hover:bg-gradient-to-tl from-zinc-900 to-zinc-700 hover:scale-110">
+    <div className="flex flex-col justify-between max-w-sm px-10 py-12 transition duration-300 ease-in-out rounded-2xl hover:bg-gradient-to-tl from-zinc-900/50 to-zinc-700/50 hover:scale-110">
       <Image src="/quotes.svg" alt="Quote Bubble" width={42} height={27} />
       <p className="my-10 text-lg leading-8 text-primary-content">{content}</p>
       <div className="flex items-center">

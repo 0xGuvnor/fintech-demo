@@ -6,7 +6,7 @@ const Testimonials = () => {
   return (
     <section
       id="clients"
-      className="relative flex flex-col items-center justify-center py-6 sm:py-16"
+      className="relative flex flex-col items-center justify-center w-full py-6 sm:py-16"
     >
       <div className="absolute z-0 w-3/5 h-3/5 -right-[50%] rounded-full blue__gradient"></div>
 
@@ -22,7 +22,7 @@ const Testimonials = () => {
         </div>
       </div>
 
-      <div className="relative z-10 flex flex-wrap justify-center w-full space-x-2 space-y-1 sm:justify-start">
+      <div className="relative z-10 flex flex-wrap justify-between w-full space-x-2 space-y-1 sm:justify-start">
         {feedback.map((card) => (
           <FeedbackCard key={card.id} {...card} />
         ))}

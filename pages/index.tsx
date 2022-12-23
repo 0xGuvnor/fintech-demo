@@ -15,7 +15,7 @@ const Home: NextPage = () => {
     <Layout title="Fintech App">
       <Hero />
 
-      <div className="flex items-start justify-center px-6 sm:px-16">
+      <div className="flex items-start justify-center px-6 overflow-hidden sm:px-16">
         <div className="w-full lg:max-w-7xl">
           <Stats />
           <Business />

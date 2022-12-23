@@ -19,7 +19,7 @@ const CardDeal = () => {
       </div>
 
       <div className="flex items-center justify-center flex-1 mt-5 md:mt-0">
-        <div className="relative flex-1 h-[500px] w-[500px]">
+        <div className="relative flex-1 h-[300px] w-[300px]">
           <Image
             src="/card.png"
             alt="Card Graphic"
